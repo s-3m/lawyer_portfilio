@@ -588,7 +588,7 @@ section,
 
 .hero p span {
   letter-spacing: 1px;
-  border-bottom: 2px solid var(--accent-color);
+  border-bottom: 2px;
 }
 
 .hero .social-links {
@@ -737,10 +737,10 @@ section,
 }
 
 .resume .resume-item h4 {
-  line-height: 18px;
+  line-height: 25px;
   font-size: 18px;
   font-weight: 600;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   margin-bottom: 10px;
 }
