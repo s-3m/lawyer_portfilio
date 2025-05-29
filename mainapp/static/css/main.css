@@ -632,9 +632,15 @@ section,
 }
 
 .about .content ul li {
-  margin-bottom: 20px;
+  margin-bottom: 70px;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .about .content ul li {
+    margin-bottom: 20px;
+  }
 }
 
 .about .content ul strong {
