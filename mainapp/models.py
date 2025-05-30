@@ -1,3 +1,57 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
-# Create your models here.
+
+class Request(models.Model):
+
+    CASE_CHOICES = (
+        ("1", "Банкротство"),
+        ("2", "Cемейные споры"),
+        ("3", "Проблемы с ГИБДД"),
+        ("4", "Судебные приставы"),
+    )
+
+    APP_TYPE_CHOICES = (
+        ("CALL", "Заявка на консультацию"),
+        ("MEET", "Запись на приём"),
+    )
+
+    REGION_CHOICES = (
+        ("M", "Москва"),
+        ("MO", "Московская область"),
+        ("K", "Краснодар"),
+    )
+
+    name = models.CharField(max_length=100, verbose_name="Имя", blank=False, null=False)
+    phone = PhoneNumberField(
+        verbose_name="Номер телефона",
+        region="RU",  # Автоматическая валидация для России
+        blank=False,
+        null=False,
+        error_messages={
+            "invalid": "Введите телефон в формате 89165556677.",
+        },
+    )
+    case = models.CharField(
+        verbose_name="Направление",
+        max_length=20,
+        blank=False,
+        null=False,
+        choices=CASE_CHOICES,
+        default="1",
+    )
+    region = models.CharField(
+        verbose_name="Регион", max_length=2, choices=REGION_CHOICES, default="M"
+    )
+    app_type = models.CharField(
+        verbose_name="Тип заявки",
+        max_length=4,
+        choices=APP_TYPE_CHOICES,
+        default="CALL",
+    )
+    message = models.TextField(
+        verbose_name="Сообщение",
+        blank=False,
+        null=True,
+        default="Поьзователь не оставил сообщения",
+    )
