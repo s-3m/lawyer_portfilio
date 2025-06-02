@@ -17,3 +17,7 @@ class RequestCreateView(CreateView):
     template_name = "mainapp/request.html"
     form_class = RequestForm
     success_url = reverse_lazy("mainapp:index")
+
+
+class PageNotFound(TemplateView):
+    template_name = "mainapp/404.html"
