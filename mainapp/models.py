@@ -60,6 +60,10 @@ class Request(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Запрос"  # Единственное число
+        verbose_name_plural = "Запросы"  # Множественное число
+
 
 class Review(models.Model):
     CASE_CHOICES = (
@@ -81,3 +85,7 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
     approved = models.BooleanField(verbose_name="Модерация", default=False)
+
+    class Meta:
+        verbose_name = "Отзыв"  # Единственное число
+        verbose_name_plural = "Отзывы"  # Множественное число
