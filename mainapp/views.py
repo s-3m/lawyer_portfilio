@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView
 from django.urls import reverse_lazy
-from mainapp.forms import RequestForm
-from mainapp.models import Request
+from mainapp.forms import RequestForm, ReviewForm
+from mainapp.models import Request, Review
 
 
 # Create your views here.
@@ -10,6 +10,11 @@ from mainapp.models import Request
 
 class IndexView(TemplateView):
     template_name = "mainapp/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["reviews_list"] = Review.objects.filter(approved=True)[:10]
+        return context
 
 
 class RequestCreateView(CreateView):
@@ -25,3 +30,14 @@ class SuccessRequest(TemplateView):
 
 class PageNotFound(TemplateView):
     template_name = "mainapp/404.html"
+
+
+class ReviewCreateView(CreateView):
+    model = Review
+    template_name = "mainapp/add_review.html"
+    form_class = ReviewForm
+    success_url = reverse_lazy("mainapp:success_review")
+
+
+class SuccessReview(TemplateView):
+    template_name = "mainapp/review_success.html"

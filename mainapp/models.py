@@ -51,7 +51,33 @@ class Request(models.Model):
     )
     message = models.TextField(
         verbose_name="Сообщение",
-        blank=False,
+        blank=True,
         null=True,
         default="",
     )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+
+    def __str__(self):
+        return self.name
+
+
+class Review(models.Model):
+    CASE_CHOICES = (
+        ("1", "Банкротство"),
+        ("2", "Cемейные споры"),
+        ("3", "Проблемы с ГИБДД"),
+        ("4", "Судебные приставы"),
+    )
+    name = models.CharField(max_length=40, verbose_name="Имя", blank=False, null=False)
+    case = models.CharField(
+        verbose_name="Направление",
+        max_length=20,
+        blank=False,
+        null=False,
+        choices=CASE_CHOICES,
+        default="3",
+    )
+    text = models.TextField(verbose_name="Отзыв", blank=False, null=False)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
+    approved = models.BooleanField(verbose_name="Модерация", default=False)

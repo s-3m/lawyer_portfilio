@@ -23,7 +23,7 @@
         <li><a href="/" class="active"><i class="bi bi-house navicon"></i>Главная</a></li>
         <li><a href="{% url 'mainapp:index' %}#resume"><i class="bi bi-hdd-stack navicon"></i> Услуги</a></li>
         <li><a href="{% url 'mainapp:index' %}#about"><i class="bi bi-person navicon"></i> Обо мне</a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Портфолио</a></li>
+        <li><a href="{% url 'mainapp:index' %}#testimonials"><i class="bi bi-card-heading navicon"></i>Отзывы</a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Контакты</a></li>
       </ul>
       <div class="header-buttons d-flex flex-column align-items-center gap-3 mt-auto p-3 my-50">
