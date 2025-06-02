@@ -19,7 +19,7 @@ class Request(models.Model):
     REGION_CHOICES = (
         ("M", "Москва"),
         ("MO", "Московская область"),
-        ("K", "Краснодар"),
+        ("K", "Калининград"),
     )
 
     name = models.CharField(max_length=100, verbose_name="Имя", blank=False, null=False)
@@ -53,5 +53,5 @@ class Request(models.Model):
         verbose_name="Сообщение",
         blank=False,
         null=True,
-        default="Поьзователь не оставил сообщения",
+        default="",
     )
