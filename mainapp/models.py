@@ -56,6 +56,8 @@ class Request(models.Model):
         default="",
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    processed = models.BooleanField(verbose_name="Заявка обработана", default=False)
+    comment = models.TextField(verbose_name="Комментарий", blank=True, default="")
 
     def __str__(self):
         return self.name

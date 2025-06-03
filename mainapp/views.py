@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, ListView
 from django.urls import reverse_lazy
 from mainapp.forms import RequestForm, ReviewForm
 from mainapp.models import Request, Review
@@ -41,3 +41,10 @@ class ReviewCreateView(CreateView):
 
 class SuccessReview(TemplateView):
     template_name = "mainapp/review_success.html"
+
+
+class ReviewListView(ListView):
+    model = Review
+    template_name = "mainapp/review_list.html"
+    context_object_name = "reviews"
+    extra_context = {"class_active": "active"}

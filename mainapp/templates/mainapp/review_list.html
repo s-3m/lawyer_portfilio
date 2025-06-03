@@ -1,0 +1,46 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block content %}     <!-- Page Title -->
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        {% for review in reviews %}
+        <div class="row gy-4 justify-content-center">
+
+          <div class="col-lg-3 d-none d-lg-block">
+            <div class="portfolio-details-slider swiper init-swiper">
+
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  <img  alt="" src={% static 'img/review_big_people.png' %}>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
+              <h3>Информация о клиенте:</h3>
+              <ul>
+                  <li><strong>Имя</strong>: {{ review.name }}</li>
+                  <li><strong>Направление</strong>: {{ review.get_case_display }}</li>
+                <li><strong>Дата отзыва</strong>: {{ review.created_at }}</li>
+              </ul>
+            </div>
+            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+              <h2>Отзыв</h2>
+              <p>{{ review.text }}</p>
+            </div>
+          </div>
+          </div>
+
+          <hr class="my-4 bg-primary" style="height: 2px; opacity: 0.5; border-radius: 10px;">
+        {% endfor %}
+      </div>
+
+
+    </section><!-- /Portfolio Details Section -->
+{% endblock content %}

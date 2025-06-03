@@ -95,7 +95,7 @@
 
         <div class="row gy-4 justify-content-center align-items-center">
           <div class="col-lg-4">
-            <img class="img-fluid" alt="" src={% static "img/my-profile-img.jpg" %}>
+            <img class="img-fluid mw-100 mw-sm-75" alt="" src={% static "img/my-profile-img.jpg" %}>
           </div>
           <div class="col-lg-8 content">
 {#            <h2>UI/UX Designer &amp; Web Developer.</h2>#}
@@ -212,10 +212,10 @@
           <div class="swiper-wrapper">
             {% for review in reviews_list %}
                 <div class="swiper-slide">
-                  <div class="testimonial-item">
+                  <div class="testimonial-item" style="display: grid; grid-template-rows: 1fr auto;">
                     <p>
                       <i class="bi bi-quote quote-icon-left"></i>
-                      <span>{{ review.text }}</span>
+                      <span>{{ review.text | truncatewords:20 }}</span>
                       <i class="bi bi-quote quote-icon-right"></i>
                     </p>
                     <img  class="testimonial-img" alt="" src={% static 'img/ico_for_review.png' %}>
@@ -228,14 +228,14 @@
           <div class="swiper-pagination"></div>
         </div>
 
-        <div class="d-flex justify-content-center gap-3 mt-4">
-            <a href="/reviews/" class="btn btn-outline-primary">
-              <i class="bi bi-chat-square-text me-2"></i>Читать все отзывы
+        <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
+            <a class="btn btn-outline-primary mb-2 mb-md-0" href="{% url 'mainapp:review_list' %}">
+                <i class="bi bi-chat-square-text me-2"></i>Читать все отзывы
             </a>
-            <a href={% url 'mainapp:create_review' %} class="btn btn-outline-primary">
-              <i class="bi bi-pencil-fill me-2"></i>Оставить отзыв
+            <a class="btn btn-outline-primary" href="{% url 'mainapp:create_review' %}">
+                <i class="bi bi-pencil-fill me-2"></i>Оставить отзыв
             </a>
-        </div>
+       </div>
       {% else %}
         <div class="text-center py-4">
           <h3 class="text-muted">Отзывов пока никто не написал :(</h3>
