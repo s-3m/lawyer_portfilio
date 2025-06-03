@@ -12,4 +12,5 @@ urlpatterns = [
     path("create_review/", views.ReviewCreateView.as_view(), name="create_review"),
     path("success_review/", views.SuccessReview.as_view(), name="success_review"),
     path("review_list/", views.ReviewListView.as_view(), name="review_list"),
+    path("contacts/", views.ContactsView.as_view(), name="contacts"),
 ]

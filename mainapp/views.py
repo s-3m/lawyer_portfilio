@@ -48,3 +48,8 @@ class ReviewListView(ListView):
     template_name = "mainapp/review_list.html"
     context_object_name = "reviews"
     extra_context = {"class_active": "active"}
+
+
+class ContactsView(TemplateView):
+    template_name = "mainapp/contacts.html"
+    extra_context = {"active_contact": "active"}
