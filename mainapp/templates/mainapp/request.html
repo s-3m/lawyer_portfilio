@@ -22,7 +22,7 @@
           </div>
 
           <div class="col-lg-7">
-            <form method="post" class="php-email-form aos-init aos-animate" action={% url "mainapp:contact_request" %}>
+            <form method="post" class="php-email-form aos-init aos-animate" action={% url "mainapp:contact_request" "success" %}>
               {% csrf_token %}
 
               <div class="row gy-4">

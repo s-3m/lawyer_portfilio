@@ -8,9 +8,11 @@ from django.core.mail import send_mail
 def notify_new_request(sender, instance, created, **kwargs):
     if created:  # Если запись новая
         send_mail(
-            "Запрос на звонок",
-            f"Появилась новая запись: {instance}",
-            "from@example.com",
-            ["admin@example.com"],
-            fail_silently=False,
+            f"Запрос на {instance.get_app_type_display()}",
+            f"Тип: {instance.get_app_type_display()}\nИмя: {instance.name}\n"
+            f"Телефон: {instance.phone}\n"
+            f"Направление: {instance.get_case_display()}\n"
+            f"Сообщение: {instance.message}\n",
+            "admin@admin.com",
+            ("admin@example.com",),
         )

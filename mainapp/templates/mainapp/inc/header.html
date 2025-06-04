@@ -1,21 +1,21 @@
-
+{% load static %}
 <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
     <div class="profile-img">
-      <img src="assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
+        <a href={% url 'mainapp:index' %}><img src="{% static 'img/header_logo.jpeg' %}" alt="" class="img-fluid rounded-circle"></a>
     </div>
 
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+    <a class="logo d-flex align-items-center justify-content-center" href={% url 'mainapp:index' %}>
       <!-- Uncomment the line below if you also wish to use an image logo -->
       <!-- <img src="assets/img/logo.png" alt=""> -->
-      <h1 class="sitename">Alex Smith</h1>
+      <h1 class="sitename">Адвокаты до Рассвета</h1>
     </a>
 
     <div class="social-links text-center">
       <a href="https://t.me/kdtp1" class="telegram"><i class="bi bi-telegram"></i></a>
-      <a href="https://wa.me/79254187006" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
-      <a href="mailto:example@domain.com" class="mail"><i class="bi bi-envelope-check"></i></a>
+      <a href="https://wa.me/79777130111" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+      <a href="mailto:kdtp.kdtp.kdtp@gmail.com" class="mail"><i class="bi bi-envelope-check"></i></a>
     </div>
 
     <nav id="navmenu" class="navmenu">
@@ -27,11 +27,11 @@
           <li><a href="{% url 'mainapp:contacts' %}" {% if active_contact %}class='{{ active_contact }}'{% endif %}><i class="bi bi-envelope navicon"></i> Контакты</a></li>
       </ul>
       <div class="header-buttons d-flex flex-column align-items-center gap-3 mt-auto p-3 my-50">
-          <a class="btn btn-dark rounded-pill px-10 py-2 w-100 d-flex align-items-center justify-content-center" href={% url 'mainapp:contact_request' %}>
+          <a class="btn btn-dark rounded-pill px-10 py-2 w-100 d-flex align-items-center justify-content-center" href={% url 'mainapp:contact_request' 'call' %}>
               <i class="bi bi-telephone me-2 navicon"></i>
               <span class="ms-2">Бесплатная консультация</span>
           </a>
-          <a class="btn btn-dark rounded-pill px-3 py-2 w-100 d-flex align-items-center justify-content-center" href={% url 'mainapp:contact_request' %}>
+          <a class="btn btn-dark rounded-pill px-3 py-2 w-100 d-flex align-items-center justify-content-center" href={% url 'mainapp:contact_request' 'meet' %}>
               <i class="bi bi-pencil-square me-2 navicon"></i>
               <span class="ms-2">Записаться на приём</span>
           </a>

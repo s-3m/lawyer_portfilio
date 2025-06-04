@@ -126,5 +126,10 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Email backend
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+if DEBUG:
+    EMAIL_HOST = "127.0.0.1"
+    EMAIL_PORT = 1025
+
 DEFAULT_CHARSET = "utf-8"
