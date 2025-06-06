@@ -55,7 +55,7 @@ class ReviewListView(ListView):
     template_name = "mainapp/review_list.html"
     context_object_name = "reviews"
     extra_context = {"class_active": "active"}
-    paginate_by = 3
+    paginate_by = 6
     queryset = Review.objects.filter(approved=True)
 
 

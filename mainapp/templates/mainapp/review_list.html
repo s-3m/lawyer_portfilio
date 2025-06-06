@@ -7,38 +7,44 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         {% for review in reviews %}
-        <div class="row gy-4 justify-content-center">
+            {% if forloop.counter0|divisibleby:2 %}
+                <div class="row gy-4 justify-content-center">
+            {% endif %}
 
-          <div class="col-lg-3 d-none d-lg-block">
-            <div class="portfolio-details-slider swiper init-swiper">
-
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img  alt="" src={% static 'img/review_big_people.png' %}>
+            <div class="col-lg-6">  <!-- Изменил col-lg-4 на col-lg-6 для двух колонок -->
+                <div class="card h-100">  <!-- Добавил карточку для лучшего визуального разделения -->
+                    <div class="row g-0">
+                        <div class="col-md-4 d-none d-md-block">
+                            <img src="{% static 'img/review_big_people.png' %}" class="img-fluid rounded-start" alt="Фото клиента">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="portfolio-info">
+                                    <h3>Информация о клиенте:</h3>
+                                    <ul>
+                                        <li><strong>Имя</strong>: {{ review.name }}</li>
+                                        <li><strong>Направление</strong>: {{ review.get_case_display }}</li>
+                                        <li><strong>Дата отзыва</strong>: {{ review.created_at }}</li>
+                                    </ul>
+                                </div>
+                                <div class="portfolio-description">
+                                    <h4>Отзыв</h4>  <!-- Изменил h2 на h4 для лучшей иерархии -->
+                                    <p>{{ review.text }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
-              <h3>Информация о клиенте:</h3>
-              <ul>
-                  <li><strong>Имя</strong>: {{ review.name }}</li>
-                  <li><strong>Направление</strong>: {{ review.get_case_display }}</li>
-                <li><strong>Дата отзыва</strong>: {{ review.created_at }}</li>
-              </ul>
-            </div>
-            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-              <h2>Отзыв</h2>
-              <p>{{ review.text }}</p>
-            </div>
-          </div>
-          </div>
-
-          <hr class="my-4 bg-primary" style="height: 2px; opacity: 0.5; border-radius: 10px;">
+            {% if forloop.counter|divisibleby:2 or forloop.last %}
+                </div>  <!-- Закрываем row после каждого второго элемента или последнего -->
+                {% if not forloop.last %}
+                    <hr class="my-4 bg-primary" style="height: 2px; opacity: 0.5; border-radius: 10px;">
+                {% endif %}
+            {% endif %}
         {% endfor %}
+    </div>
       <!-- Пагинация -->
         {% if is_paginated %}
             <nav aria-label="Page navigation">
