@@ -1,6 +1,19 @@
 {% extends "mainapp/base.html" %}
 {% load static %}
 
+{% block microdata %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Судебная защита в Москве",
+      "description": "Судебная защита в Москве, Подмосковье и Калининграде: банкротство, семейные споры, ДТП, исполнительное производство. Бесплатная консультация.",
+      "datePublished": "{{ article.published_date|date:'c' }}",
+      "image": "{% static 'img/hero-bg.jpg' %}"
+    }
+</script>
+{% endblock microdata %}
+
 {% block content %}
     <main class="main">
 
