@@ -165,7 +165,7 @@ h6 {
 }
 
 .header .profile-img img {
-  margin: 15px auto;
+  margin: 0 auto;
   display: block;
   width: 120px;
   border: 8px solid color-mix(in srgb, var(--default-color), transparent 85%);
@@ -173,7 +173,7 @@ h6 {
 
 .header .logo {
   line-height: 1;
-  margin-bottom: 15px;
+  /*margin-bottom: 15px;*/
 }
 
 .header .logo img {

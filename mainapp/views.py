@@ -56,7 +56,7 @@ class ReviewListView(ListView):
     context_object_name = "reviews"
     extra_context = {"class_active": "active"}
     paginate_by = 6
-    queryset = Review.objects.filter(approved=True)
+    queryset = Review.objects.filter(approved=True).order_by("-created_at")
 
 
 class ContactsView(TemplateView):
