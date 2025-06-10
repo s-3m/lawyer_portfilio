@@ -9,18 +9,18 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
-
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv(BASE_DIR / "lawyer" /'.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-_lo3i#%0t*gerh#g-_kfly)*sj5n4(l1@jjbo0_u*+j@zw&h!m"
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -115,7 +115,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "static"
 
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
@@ -127,10 +128,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Email backend
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_ADDRESS = os.getenv("EMAIL_FOR_PROJECT")
+EMAIL_HOST = 'smtp.yandex.ru'  # Например, для Yandex
+EMAIL_PORT = 587  # Для TLS
+EMAIL_USE_TLS = True  # Использовать TLS
+EMAIL_USE_SSL = False  # Не использовать SSL
+EMAIL_HOST_USER = EMAIL_ADDRESS  # Ваш email
+EMAIL_HOST_PASSWORD = os.getenv("YANDEX_APP_PWD")  # Пароль от почты или приложения
+DEFAULT_FROM_EMAIL = EMAIL_ADDRESS  # Email отправителя по умолчанию
+SERVER_EMAIL = EMAIL_ADDRESS  # Email для отправки ошибок админам
 
-if DEBUG:
-    EMAIL_HOST = "127.0.0.1"
-    EMAIL_PORT = 1025
+# if DEBUG:
+#     EMAIL_HOST = "127.0.0.1"
+#     EMAIL_PORT = 1025
 
 DEFAULT_CHARSET = "utf-8"
 

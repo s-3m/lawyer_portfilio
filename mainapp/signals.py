@@ -2,6 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from mainapp.models import Request, Review
 from .tasks import send_email_notify
+from django.conf import settings
 
 @receiver(post_save, sender=Request)
 def notify_new_request(sender, instance, created, **kwargs):
@@ -14,7 +15,7 @@ def notify_new_request(sender, instance, created, **kwargs):
                    f"Направление: {instance.get_case_display()}\n"
                    f"Сообщение: {instance.message}\n")
 
-        send_email_notify.delay(subject, message, "admin@site.com", ["admin@site.com"])
+        send_email_notify.delay(subject, message, settings.EMAIL_ADDRESS, [settings.EMAIL_ADDRESS])
 
 
 @receiver(post_save, sender=Review)
@@ -27,4 +28,4 @@ def notify_new_review(sender, instance: Review, created, **kwargs):
                    f"Направление: {instance.get_case_display()}\n")
 
 
-        send_email_notify.delay(subject, message, "admin@site.com", ["admin@site.com"])
+        send_email_notify.delay(subject, message, settings.EMAIL_ADDRESS, [settings.EMAIL_ADDRESS])
