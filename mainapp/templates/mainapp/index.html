@@ -1,0 +1,264 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block microdata %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Судебная защита в Москве",
+      "description": "Судебная защита в Москве, Подмосковье и Калининграде: банкротство, семейные споры, ДТП, исполнительное производство. Бесплатная консультация.",
+      "datePublished": "{{ article.published_date|date:'c' }}",
+      "image": "{% static 'img/hero-bg.jpg' %}"
+    }
+</script>
+{% endblock microdata %}
+
+{% block content %}
+    <main class="main">
+
+    <!-- Приветственной блок -->
+    <section id="hero" class="hero section dark-background">
+
+      <img alt="" data-aos="fade-in" class="" src={% static 'img/hero-bg.jpg' %}>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h2>Тринадов Игорь Андреевич</h2>
+{#        <p>Я - <span class="typed" data-typed-items="Юрист, Филантроп, Музыкант, Человечище"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>#}
+        <p><span>Судебная защита в Москве, Подмосковье и Калининграде: <br> банкротство, семейные споры, ДТП, исполнительное производство</span></p>
+      </div>
+
+    </section><!-- /Приветственной блок -->
+
+    <!-- Направление деятельности -->
+    <section id="resume" class="resume section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Направление деятельности</h2>
+        <p>Профессиональная судебная защита и юридическая помощь для физических и юридических лиц. Отстаиваю ваши права в суде и помогаю решать сложные правовые вопросы. Юридическая помощь на всех этапах судебного процесса: от консультации до исполнения решения. Ваши интересы – моя главная задача.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">Банкротство физических лиц</h3>
+            <div class="resume-item pb-0">
+              <h4>ст. 127 (ч. 2) Федерального закона от 26.10.2002 №127-ФЗ  «О несостоятельности (банкротстве)»</h4>
+              <p><em>Что это такое банкротство или финансовая несостоятельность? Это законный способ физических лиц избавиться от долгов, регламентированный № 127-ФЗ «О несостоятельности (банкротстве) физических лиц». Фактически, реабилитация при больших долгах. Должники получают возможность освободиться от неподъемных кредитов и начать свою финансовую историю с нуля.</em></p>
+              <ul>
+                <li>Списание долгов в Москве</li>
+                <li>Списание долгов в Балашихе</li>
+                <li>Списание долгов в Калининграде</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+            <h3 class="resume-title">Семейные споры</h3>
+            <div class="resume-item">
+              <h4>Семейный кодекс Российской Федерации</h4>
+              <p><em>Семейные конфликты требуют деликатного подхода и юридической грамотности. Защищаю ваши интересы в спорах о детях, имуществе и алиментах – профессионально и тактично.</em></p>
+              <ul>
+                <li>Установление отцовства через ДНК (ст. 49 СК РФ)</li>
+                <li>Восстановление встреч с ребёнком (ст. 66 СК РФ)</li>
+              </ul>
+              </div><!-- Edn Resume Item -->
+
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="resume-title">Исполнительное производство</h3>
+            <div class="resume-item">
+              <p><em>Не получается взыскать долг? Банк, застройщик или контрагент не платят? Приставы бездействуют? Добьюсь реального возврата ваших средств через суд и ФССП. Исполнительное производство "под ключ" — от подачи заявления до реального получения денег.</em></p>
+              <ul>
+                <li>Принудительное взыскание долгов — через суд и службу судебных приставов.</li>
+                <li>Оспаривание бездействия приставов — жалобы, требование ареста имущества, розыск должника.</li>
+                <li>Работа с просроченной задолженностью — даже если прошло много времени.</li>
+                <li>Принудительное взыскание долгов — через суд и службу судебных приставов.</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+            <h3 class="resume-title">Автоюридические услуги</h3>
+            <div class="resume-item">
+{#              <h4>Семейный кодекс Российской Федерации</h4>#}
+              <p><em>Помощь по ст. 12.27 ч. 2 КоАП (оставление места ДТП) и ст. 12.24 КоАП (нарушение ПДД, повлёкшее вред здоровью).</em></p>
+              <ul>
+                <li>Оспаривание штрафов</li>
+                <li>Защита прав водителей в Москве</li>
+                <li>Защита прав водителей в Калининграде</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Направление деятельности -->
+
+    <!-- Преимущества -->
+    <section id="about" class="about section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Преимущества работы со мной</h2>
+        <p>Профессиональный юрист — ваш надежный проводник в мире права. Я не просто дам совет, а возьму на себя всю работу: от анализа документов до представительства в судах и госорганах. Я знаю, как добиться результата быстрее — будь то взыскание долга через приставов, снижение штрафа или защита от недобросовестных контрагентов. Вы избежите рисков и финансовых потерь, ведь наша компания заранее просчитает все нюансы и подберет оптимальную стратегию. Доверьте дело профессионалу — и получите максимум возможного по закону без лишнего стресса.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 justify-content-center align-items-center">
+          <div class="col-lg-4">
+            <img class="img-fluid mw-100 mw-sm-75" alt="" src={% static "img/my-profile-img.jpg" %}>
+          </div>
+          <div class="col-lg-8 content">
+{#            <h2>UI/UX Designer &amp; Web Developer.</h2>#}
+{#            <p class="fst-italic py-3">#}
+{#              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore#}
+{#              magna aliqua.#}
+{#            </p>#}
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li class="fs-4"><i class="bi bi-chevron-right"></i> <strong>Офисы в Москве и Калининграде</strong></li>
+                  <li class="fs-4"><i class="bi bi-chevron-right"></i> <strong>Выезд по области</strong></li>
+                  <li class="fs-4"><i class="bi bi-chevron-right"></i> <strong>Опыт 10+ лет по всем направлениям</strong></li>
+
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li class="fs-4"><i class="bi bi-chevron-right"></i> <strong>Гарантия результата</strong></li>
+                  <li class="fs-4"><i class="bi bi-chevron-right"></i> <strong>Гарантия конфиденциальности</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Преимущества -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+             <i class="bi bi-calendar2"></i>
+             <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
+             <p><strong>Лет</strong> <span>успешной работы по всем направлениям</span></p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <i class="bi bi-emoji-smile"></i>
+               <span data-purecounter-start="0" data-purecounter-end="224" data-purecounter-duration="1" class="purecounter"></span>
+                <p><strong>Довольных</strong> <span>клиента, включая юридических лиц</span>
+            </div>
+          </div><!-- End Stats Item -->
+
+
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Часа</strong> <span>на связи со своими клиентами</span></p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <i class="bi bi-bezier"></i>
+              <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Направлений</strong> <span>деятельности в сфере защиты ваших интересов</span></p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+    <!-- Отзывы -->
+    <section id="testimonials" class="testimonials section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Отзывы</h2>
+        <p>Реальные отзывы клиентов, которым мы помогли в сложных жизненных ситуациях!</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      {% if reviews_list %}
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 40
+                },
+                "1200": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 1
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+            {% for review in reviews_list %}
+                <div class="swiper-slide">
+                  <div class="testimonial-item" style="display: grid; grid-template-rows: 1fr auto;">
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>{{ review.text | truncatewords:20 }}</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                    <img  class="testimonial-img" alt="" src={% static 'img/ico_for_review.png' %}>
+                    <h3>{{ review.name }}</h3>
+                    <h4>{{ review.get_case_display }}</h4>
+                  </div>
+                </div><!-- End testimonial item -->
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
+            <a class="btn btn-outline-primary mb-2 mb-md-0" href="{% url 'mainapp:review_list' %}">
+                <i class="bi bi-chat-square-text me-2"></i>Читать все отзывы
+            </a>
+            <a class="btn btn-outline-primary" href="{% url 'mainapp:create_review' %}">
+                <i class="bi bi-pencil-fill me-2"></i>Оставить отзыв
+            </a>
+       </div>
+      {% else %}
+        <div class="text-center py-4">
+          <h3 class="text-muted">Отзывов пока никто не написал :(</h3>
+          <a class="btn btn-outline-primary" href={% url 'mainapp:create_review' %}>
+          <i class="bi bi-pencil-square me-2"></i>Написать первый отзыв
+          </a>
+        </div>
+      {% endif %}
+      </div>
+
+    </section><!-- /Отзывы -->
+  </main>
+{% endblock content %}

@@ -1,0 +1,102 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block content %}     <!-- Page Title -->
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        {% for review in reviews %}
+            {% if forloop.counter0|divisibleby:2 %}
+                <div class="row gy-4 justify-content-center">
+            {% endif %}
+
+            <div class="col-lg-6">  <!-- Изменил col-lg-4 на col-lg-6 для двух колонок -->
+                <div class="card h-100">  <!-- Добавил карточку для лучшего визуального разделения -->
+                    <div class="row g-0">
+                        <div class="col-md-4 d-none d-md-block">
+                            <img src="{% static 'img/review_big_people.png' %}" class="img-fluid rounded-start" alt="Фото клиента">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="portfolio-info">
+                                    <h3>Информация о клиенте:</h3>
+                                    <ul>
+                                        <li><strong>Имя</strong>: {{ review.name }}</li>
+                                        <li><strong>Направление</strong>: {{ review.get_case_display }}</li>
+                                        <li><strong>Дата отзыва</strong>: {{ review.created_at }}</li>
+                                    </ul>
+                                </div>
+                                <div class="portfolio-description">
+                                    <h4>Отзыв</h4>  <!-- Изменил h2 на h4 для лучшей иерархии -->
+                                    <p>{{ review.text }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if forloop.counter|divisibleby:2 or forloop.last %}
+                </div>  <!-- Закрываем row после каждого второго элемента или последнего -->
+                {% if not forloop.last %}
+                    <hr class="my-4 bg-primary" style="height: 2px; opacity: 0.5; border-radius: 10px;">
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+      <!-- Пагинация -->
+        {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center mt-4">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1" aria-label="First">
+                                &laquo;&laquo;
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                &laquo;
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active">
+                                <span class="page-link">{{ num }}</span>
+                            </li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                &raquo;
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+                                &raquo;&raquo;
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+        <div class="text-center py-4">
+          <a class="btn btn-outline-primary" href={% url 'mainapp:create_review' %}>
+          <i class="bi bi-pencil-square me-2"></i>Добавить отзыв
+          </a>
+        </div>
+      </div>
+
+
+
+    </section><!-- /Portfolio Details Section -->
+{% endblock content %}

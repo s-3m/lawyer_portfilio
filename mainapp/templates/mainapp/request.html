@@ -1,0 +1,92 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Оставить заявку</h2>
+        <p>Вы можете оставить заявку на обратный звонок или записаться на приём. Специалист перезвонит вам в течение 10 минут и ответит на все возникающие вопросы.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-8">
+
+          <div class="col-lg-5 d-none d-lg-block">
+          <div class="info-wrap">
+            <img class="img-fluid" alt="" src={% static "img/for_contact.jpeg" %}>
+          </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form method="post" class="php-email-form aos-init aos-animate" action={% url "mainapp:contact_request" "success" %}>
+              {% csrf_token %}
+
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <label for={{ form.name.id_for_label }} class="pb-2">Ваше имя: </label>
+                  {{ form.name }}
+{#                  <input type="text" name="name" id="name-field" class="form-control" required="">#}
+                </div>
+
+                <div class="col-md-6">
+                  <label for={{ form.phone.id_for_label }} class="pb-2">Номер телефона: </label>
+                  {{ form.phone }}
+                  {% if form.phone.errors %}
+                    <div class="invalid-feedback d-block">
+                      {% for error in form.phone.errors %}
+                      <div class="alert alert-danger p-2 mt-1">{{ error }}</div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+{#                  <input type="email" class="form-control" name="email" id="email-field" required="">#}
+                </div>
+
+                <div class="col-md-6">
+                  <label for={{ form.case.id_for_label }} class="pb-2">Направление: </label>
+                  {{ form.case }}
+{#                  <input type="text" class="form-control" name="subject" id="subject-field" required="">#}
+                </div>
+                <div class="col-md-6">
+                  <label for={{ form.region.id_for_label }} class="pb-2">Предпочитаемый регион: </label>
+                  {{ form.region }}
+{#                  <input type="text" class="form-control" name="subject" id="subject-field" required="">#}
+                </div>
+
+                <div class="col-md-12">
+                  <label for={{ form.app_type.id_for_label }} class="pb-2">Тип заявки: </label>
+                  {{ form.app_type }}
+{#                  <input type="text" class="form-control" name="subject" id="subject-field" required="">#}
+                </div>
+
+                <div class="col-md-12">
+                  <label for={{ form.message.id_for_label }} class="pb-2">Сообщение (необязательно): </label>
+                  {{ form.message }}
+{#                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>#}
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message">
+                      {% if  form.errors %}
+                      	{{ form.errors }}
+                      {% endif %}
+                  </div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <button type="submit">Отправить заявку</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+{% endblock content %}
